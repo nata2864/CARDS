@@ -13,7 +13,6 @@ export const createGameMenu = () => {
     </div>`
   
   
-  
   const chooseDifficult = document.querySelectorAll(
     ".game-menu__difficult-btn"
   );

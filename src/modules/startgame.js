@@ -66,32 +66,6 @@ export const startGame = (difficult) => {
         ${cardsHtml}
         </div> `;
 
-        const restartBTn = document.querySelector('.main__game_content_button')
-        restartBTn.addEventListener('click', () => {
-            startGame(difficult)
-        })
- 
-        function closecards() {
-            const cards = document.querySelectorAll('.card__back')
-            for (const card of cards) {
-                card.style.display = 'flex'
-                card.addEventListener('click',  () => {
-                    card.style.display = 'none'
-                })
-            }
-        }
-
-        setTimeout(() => closecards(), 5000)
-    
-        function opencards() {
-            const cardsO = document.querySelectorAll('.card__back')
-            
-            for (const card of cardsO) {
-                card.addEventListener('click',  () => {
-                    card.style.display = 'none'
-                })
-            }
-        }
-            opencards()
+  
     }
     
