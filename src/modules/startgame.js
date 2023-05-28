@@ -1,58 +1,56 @@
 import { createcardsArray } from "./cardmix.js";
+// import { cardsApp } from "./index.js"
 
 export const startGame = (difficult) => {
-  const suitsBackground = {
-    "♠": "spades.svg",
-    "♣": "clubs.svg",
-    "♥": "hearts.svg",
-    "♦": "diamonds.svg",
-  };
+    const suitsBackground = {
+        "♠": "spades.svg",
+        "♣": "clubs.svg",
+        "♥": "hearts.svg",
+        "♦": "diamonds.svg",
+    };
 
-  const gameSection = document.querySelector(".game-section-start__container");
-  const gameTable = document.querySelector(".game-section-cards__container");
-  const cardsBox = document.createElement("div");
-  cardsBox.classList.add("cards__box");
-  gameSection.style.display = "none";
-  let cardsIcons = createcardsArray(difficult);
+    const gameSection = document.querySelector(
+        ".game-section-start__container"
+    );
+    const gameTable = document.querySelector(".game-section-cards__container");
+    gameTable.style.opacity = "1";
+    gameSection.style.display = "none";
+    let cardsIcons = createcardsArray(difficult);
 
-  const cardsHtml = cardsIcons
-    .map((card) => {
-      return `
+    const cardsHtml = cardsIcons
+        .map((card) => {
+            return `
       
       <div data-value=${card.value} data-suit=${
-        card.suit
-      } class="game-table__card" >
+                card.suit
+            } class="game-table__card" >
      
           <div class="card__face" style="background: url(./assets/images/${
-            suitsBackground[card.suit]
+              suitsBackground[card.suit]
           }) center center no-repeat, rgb(255, 255, 255);">
          
               <div class="card__top">    
                   <div class="card__value">${card.value}
                   </div>
                   <img class="card__suit" src="./assets/images/${
-                    suitsBackground[card.suit]
+                      suitsBackground[card.suit]
                   }" alt="suit">
               </div>
               <div class="card__bottom">    
                   <div class="card__value">${card.value}
                   </div>
                   <img class="card__suit" src="./assets/images/${
-                    suitsBackground[card.suit]
+                      suitsBackground[card.suit]
                   }" alt="suit">
-              </div>
-              
-              
+              </div>   
           </div>
-          <div class="card__back"></div>
-          
-    </div>
-     
+          <div class="card__back"></div>    
+    </div>     
       `;
-    })
-    .join("");
+        })
+        .join("");
 
-  gameTable.innerHTML = `
+    gameTable.innerHTML = `
     <div class="main__game_content">
         <div id="timer">
             <div class="timer__text">
@@ -66,6 +64,42 @@ export const startGame = (difficult) => {
         ${cardsHtml}
         </div> `;
 
-  const restartBTn = document.querySelector(".main__game_content_button");
-  restartBTn.addEventListener("click", () => {});
+    const restartBTn = document.querySelector(".main__game_content_button");
+    restartBTn.addEventListener("click", () => {
+        startGame(difficult);
+    });
+
+    function closecards() {
+        const cards = document.querySelectorAll(".card__back");
+        for (const card of cards) {
+            card.style.display = "flex";
+        }
+    }
+
+    const coutDownEl = document.querySelector(".timer");
+    let timer = 5;
+    coutDownEl.textContent = "00.05";
+    let id = setInterval(function () {
+        timer--;
+        if (timer === 0) {
+            clearInterval(id);
+            closecards();
+            // game();
+        } else {
+            coutDownEl.innerHTML = `00.0${timer}`;
+        }
+    }, 1000);
+
+    // setTimeout(() => closecards(), 5000)
+
+    function opencards() {
+    const cardsO = document.querySelectorAll(".card__back");
+
+        for (const card of cardsO) {
+            card.addEventListener("click", () => {
+                card.style.display = "none";
+            });
+        }
+    }
+    opencards();
 };
