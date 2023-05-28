@@ -1,44 +1,34 @@
 import { startGame } from "./startgame.js";
 
 export const createGameMenu = () => {
-  const title = document.createElement("h2");
-  const gameSection = document.querySelector(".game-section-start__container");
-  gameSection.innerHTML = "";
-  title.textContent = "Выбери сложность";
-  title.classList.add("game-menu__title");
+  
+  const gameSection = document.querySelector('.game-section-start__container')
 
-  const easy = document.createElement("button");
-  // Здесь присвоили класс кнопке
-  easy.classList.add("game-menu__difficult-btn");
-  // Здесь написали ее номер
-  easy.textContent = 1;
-
-  const medium = document.createElement("button");
-  medium.classList.add("game-menu__difficult-btn");
-  medium.textContent = 2;
-
-  const hard = document.createElement("button");
-  hard.classList.add("game-menu__difficult-btn");
-  hard.textContent = 3;
-
-  const buttonStart = document.createElement("button");
-  buttonStart.classList.add("game-menu__start-btn");
-  buttonStart.textContent = "Старт";
-  // Аппендим
-  gameSection.append(title, easy, medium, hard, buttonStart);
-
+    gameSection.innerHTML = `<div class="game-section-start__container">
+        <h2 class="game-menu__title">Выбери <br>сложность</h2>
+        <button class="game-menu__difficult-btn">1</button>
+        <button class="game-menu__difficult-btn">2</button>
+        <button class="game-menu__difficult-btn">3</button>
+        <button class="game-menu__start-btn">Старт</button>
+    </div>`
+  
+  
+  
   const chooseDifficult = document.querySelectorAll(
     ".game-menu__difficult-btn"
   );
-  for (const chooseButtonElement of chooseDifficult) {
-    chooseButtonElement.addEventListener("click", () => {
+  
+  chooseDifficult.forEach((element) =>
+  element.addEventListener('click', () => {
       chooseDifficult.forEach((el) =>
-        el.classList.remove("game-menu__difficult-btn_checked")
-      );
-      chooseButtonElement.classList.add("game-menu__difficult-btn_checked");
+          el.classList.remove('game-menu__difficult-btn_checked')
+      )
+      element.classList.add('game-menu__difficult-btn_checked')
+      const buttonStart = document.querySelector('.game-menu__start-btn')
 
-      const difficult = chooseButtonElement.textContent;
-      buttonStart.addEventListener("click", () => startGame(difficult));
-    });
-  }
+      buttonStart.addEventListener('click', () => {
+          startGame(element.textContent)
+      })
+  })
+)
 };
