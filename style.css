@@ -142,7 +142,7 @@ main {
   height: 100%;
   display: flex;
   display: none;
-  background: url(./assets/images/back.jpg);
+  background: url(./asset/images/back.jpg);
   border-radius: 4px;
   width: 95px;
   height: 133px;

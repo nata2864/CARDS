@@ -4,20 +4,30 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -p 3001",
+    "dev": "webpack --mode development --watch",
     "format": "prettier —write./src/modules/",
-    "lint:js":"eslint ./src/modules/**/*.js'",
+    "lint:js": "eslint './src/modules/**/*.js'",
     "lint:css": "stylelint './src/modules/**/*.css'",
     "prepare": "husky install",
-    "lint": "npm run lint:js && npm run lint:css"
+    "lint": "npm run lint:js && npm run lint:css",
+    "build": "webpack"
   },
-    "author": "Natalia Bashirova",
-    "license": "ISC",
-    "devDependencies": {
+  "author": "Natalia Bashirova",
+  "license": "ISC",
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "html-webpack-plugin": "^5.5.1",
     "husky": "^8.0.3",
-    "prettier": "^2.8.8"
+    "prettier": "^2.8.8",
+    "webpack": "^5.84.1",
+    "webpack-cli": "^5.1.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }

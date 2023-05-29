@@ -25,21 +25,21 @@ export const startGame = (difficult) => {
                 card.suit
             } class="game-table__card" >
      
-          <div class="card__face" style="background: url(./assets/images/${
+          <div class="card__face" style="background: url(./asset/images/${
               suitsBackground[card.suit]
           }) center center no-repeat, rgb(255, 255, 255);">
          
               <div class="card__top">    
                   <div class="card__value">${card.value}
                   </div>
-                  <img class="card__suit" src="./assets/images/${
+                  <img class="card__suit" src="./asset/images/${
                       suitsBackground[card.suit]
                   }" alt="suit">
               </div>
               <div class="card__bottom">    
                   <div class="card__value">${card.value}
                   </div>
-                  <img class="card__suit" src="./assets/images/${
+                  <img class="card__suit" src="./asset/images/${
                       suitsBackground[card.suit]
                   }" alt="suit">
               </div>   
