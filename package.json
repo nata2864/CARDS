@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "http-server -p 3001",
+    "start": "webpack-dev-server ––open",
     "dev": "webpack --mode development --watch",
     "format": "prettier —write./src/modules/",
     "lint:js": "eslint './src/modules/**/*.js'",
     "lint:css": "stylelint './src/modules/**/*.css'",
     "prepare": "husky install",
     "lint": "npm run lint:js && npm run lint:css",
-    "build": "webpack"
+    "build": "set NODE_ENV= production webpack"
   },
   "author": "Natalia Bashirova",
   "license": "ISC",
@@ -25,7 +25,8 @@
     "husky": "^8.0.3",
     "prettier": "^2.8.8",
     "webpack": "^5.84.1",
-    "webpack-cli": "^5.1.1"
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
   },
   "dependencies": {
     "lodash": "^4.17.21"
