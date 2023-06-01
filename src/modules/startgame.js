@@ -25,21 +25,21 @@ export const startGame = (difficult) => {
                 card.suit
             } class="game-table__card" >
      
-          <div class="card__face" style="background: url(./asset/images/${
+          <div class="card__face" style="background: url(./static/images/${
               suitsBackground[card.suit]
           }) center center no-repeat, rgb(255, 255, 255);">
          
               <div class="card__top">    
                   <div class="card__value">${card.value}
                   </div>
-                  <img class="card__suit" src="./asset/images/${
+                  <img class="card__suit" src="./static/images/${
                       suitsBackground[card.suit]
                   }" alt="suit">
               </div>
               <div class="card__bottom">    
                   <div class="card__value">${card.value}
                   </div>
-                  <img class="card__suit" src="./asset/images/${
+                  <img class="card__suit" src="./static/images/${
                       suitsBackground[card.suit]
                   }" alt="suit">
               </div>   
@@ -93,7 +93,7 @@ export const startGame = (difficult) => {
     // setTimeout(() => closecards(), 5000)
 
     function opencards() {
-    const cardsO = document.querySelectorAll(".card__back");
+        const cardsO = document.querySelectorAll(".card__back");
 
         for (const card of cardsO) {
             card.addEventListener("click", () => {
