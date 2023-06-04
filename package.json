@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open",
-        "dev": "webpack --mode development --watch",
-        "format": "prettier —write./src/modules/",
-        "lint:js": "eslint './src/modules/**/*.js'",
-        "lint:css": "stylelint './src/modules/**/*.css'",
-        "prepare": "husky install",
-        "lint": "npm run lint:js && npm run lint:css",
-        "build": "cross-env NODE_ENV=production webpack"
+    "dev": "webpack --mode development --watch",
+    "format": "prettier —write./src/modules/",
+    "lint:js": "eslint './src/modules/**/*.js'",
+    "lint:css": "stylelint './src/modules/**/*.css'",
+    "prepare": "husky install",
+    "lint": "npm run lint:js && npm run lint:css",
+    "build": "cross-env NODE_ENV=production webpack",
+    "lint:ts": "tsc ––noEmit" 
   },
   "author": "Natalia Bashirova",
   "license": "ISC",
@@ -27,6 +28,8 @@
     "husky": "^8.0.3",
     "mini-css-extract-plugin": "^2.7.6",
     "prettier": "^2.8.8",
+    "ts-loader": "^9.4.3",
+    "typescript": "^5.1.3",
     "webpack": "^5.84.1",
     "webpack-cli": "^5.1.1",
     "webpack-dev-server": "^4.15.0"

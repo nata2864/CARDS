@@ -1,11 +1,11 @@
-import { startGame } from "./startgame.js";
+import { startGame } from "./startgame";
 
 export const createGameMenu = () => {
     const gameSection = document.querySelector(
         ".game-section-start__container"
     );
 
-    gameSection.innerHTML = `<div class="game-section-start__container">
+    gameSection!.innerHTML = `<div class="game-section-start__container">
         <h2 class="game-menu__title">Выбери <br>сложность</h2>
         <button class="game-menu__difficult-btn">1</button>
         <button class="game-menu__difficult-btn">2</button>
@@ -25,7 +25,7 @@ export const createGameMenu = () => {
             element.classList.add("game-menu__difficult-btn_checked");
             const buttonStart = document.querySelector(".game-menu__start-btn");
 
-            buttonStart.addEventListener("click", () => {
+            buttonStart!.addEventListener("click", () => {
                 startGame(element.textContent);
             });
         })
