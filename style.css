@@ -1,14 +1,11 @@
 @font-face {
-    font-family: "StratosSkyeng";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url("./asset/fonts/stratosskyengweb-regular.woff2") format("woff2");
-  }
- 
+    font-family: stratosskyengweb;
+    src: url('asset/fonts/stratosskyengweb-regular.woff2');
+}
+
 body {
-    font-family: "stratosskyengweb";
-    background-color: #004980;
+    font-family: 'stratosskyengweb';
+    overflow-x: hidden;
 }
 
 * {
@@ -28,6 +25,12 @@ main {
     align-content: center;
     justify-content: center;
     overflow: auto;
+    transition: 0.5s all;
+    background-color: #004980;
+}
+main.active {
+    /* opacity: 0.8; */
+    pointer-events: all;
 }
 .game-section-start__container {
     margin: 0 auto;
@@ -42,7 +45,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 208px;
+    /* width: 208px; */
     height: 96px;
     text-align: center;
     font-weight: 400;
@@ -53,7 +56,7 @@ main {
 }
 
 .game-menu__difficult-btn {
-    font-family: "stratosskyengweb";
+    font-family: 'stratosskyengweb';
     cursor: pointer;
     margin-top: 3rem;
     margin-left: 2.75rem;
@@ -69,7 +72,7 @@ main {
     color: #0080c1;
 }
 .game-menu__start-btn {
-    font-family: "stratosskyengweb";
+    font-family: 'stratosskyengweb';
     cursor: pointer;
     margin: 4.2rem auto 0 auto;
     display: flex;
@@ -114,6 +117,10 @@ main {
     position: relative;
 }
 
+.successfully {
+    opacity: 0.3;
+}
+
 .card__face {
     position: absolute;
     left: 0;
@@ -129,9 +136,8 @@ main {
 }
 
 .card__top {
-    font-family: "stratosskyengweb";
+    font-family: 'stratosskyengweb';
     display: flex;
-
     flex-direction: column;
     align-items: center;
     font-size: 24px;
@@ -149,11 +155,11 @@ main {
     height: 100%;
     display: flex;
     display: none;
-    background: url(./asset/images/back.jpg);
+    background: url(asset/images/back.jpg);
     border-radius: 4px;
     width: 95px;
     height: 133px;
-    transform: rotateX("180deg");
+    transform: rotateX('180deg');
 }
 
 .card__suit {
@@ -161,7 +167,7 @@ main {
 }
 
 .card__bottom {
-    font-family: "stratosskyengweb";
+    font-family: 'stratosskyengweb';
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -183,7 +189,7 @@ main {
 }
 
 .main__game_content_button {
-    font-family: "stratosskyengweb";
+    font-family: 'stratosskyengweb';
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -200,7 +206,7 @@ main {
 }
 
 .timer {
-    font-family: "StratosSkyengweb";
+    font-family: 'StratosSkyengweb';
     font-style: normal;
     font-weight: 400;
     font-size: 64px;
@@ -212,10 +218,64 @@ main {
     display: flex;
     justify-content: flex-end;
     gap: 40%;
-    font-family: "StratosSkyengweb";
+    font-family: 'StratosSkyengweb';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     color: #ffffff;
 }
 
+.popup {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+}
+.game-menu__subTitle {
+    display: flex;
+    justify-content: center;
+    font-family: 'StratosSkyengweb';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #000000;
+}
+
+.timer_result-img {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.game-menu_result-title {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 400;
+    line-height: 48px;
+    color: #004980;
+    font-size: 2.5rem;
+}
+.game-menu__subTitle {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+.timer_result {
+    margin-top: 1rem;
+    font-family: 'StratosSkyengweb';
+    display: flex;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 72px;
+    color: #000000;
+}

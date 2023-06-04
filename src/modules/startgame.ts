@@ -1,5 +1,11 @@
 import { createcardsArray } from "./cardmix";
-// import { cardsApp } from "./index.js"
+import { cardsApp } from "../../index"
+
+declare global {
+    interface Window {
+        timeGame: any
+    }
+}
 
 export const startGame = (difficult: string) => {
     const suitsBackground: Record<string, string> = {
@@ -85,21 +91,108 @@ export const startGame = (difficult: string) => {
         if (timer === 0) {
             clearInterval(id);
             closecards();
-            // game();
+            game();
         } else {
             coutDownEl.innerHTML = `00.0${timer}`;
         }
     }, 1000);
 
 
-    // function opencards() {
-    //     const cardsO = document.querySelectorAll(".card__back");
+    function gameResult(winner: boolean) {
+        clearInterval(window.timeGame);
+        gameSection.style.display = "block";
+        const timerResult = coutDownEl.textContent;
+        gameTable.style.opacity = "0.3";
+        gameSection.classList.add("popup");
 
-    //     for (const card of cardsO) {
-    //         card.addEventListener("click", () => {
-    //             card.style.display = "none";
-    //         });
-    //     }
-    // }
-    // opencards();
+        gameSection.innerHTML = `<div class="game-section-start__container">
+            <img class="timer_result-img" src="./static/images/${
+                winner ? 'winner.svg" alt="win"' : 'loser.svg" alt="lose"'
+            }  >
+            
+            <h2 class="game-menu_result-title">${
+                winner ? "Вы выиграли" : "Вы проиграли"
+            }</h2>
+            <p class="game-menu__subTitle">Затраченное время</h2>
+            <p class='timer_result'>${timerResult}</p>
+            <button class="game-menu__start-btn">Играть снова</button>
+            </div>`;
+
+        const restartBTn = document.querySelector(".game-menu__start-btn");
+        restartBTn.addEventListener("click", () => {
+            cardsApp();
+        });
+    }
+
+    function getTimeResult() {
+        timer = 0;
+
+        coutDownEl.textContent = "00.00";
+        function setTime() {
+            timer++;
+            const minutes = ("00" + Math.floor(timer / 60)).slice(-2);
+            const seconds = ("00" + (timer % 60)).slice(-2);
+            coutDownEl.textContent = `${minutes}.${seconds}`;
+        }
+        window.timeGame = setInterval(setTime, 1000);
+        setTimeout(clearInterval, 600000, window.timeGame);
+    }
+    
+    function game(): void {
+        getTimeResult();
+        let firstCard: number | null = null;
+        let secondCard: number | null = null;
+        let clickable: boolean = true;
+        let winner: boolean = false;
+        const allCards: NodeListOf<HTMLDivElement> = document.querySelectorAll(".game-table__card");
+      
+        allCards.forEach((card: HTMLDivElement, index: number) => {
+          card.addEventListener("click", () => {
+            if (clickable && !card.classList.contains("successfully")) {
+              card.querySelector<HTMLDivElement>(".card__back")!.classList.remove("card__back");
+      
+              if (firstCard === null) {
+                firstCard = index;
+              } else {
+                if (index !== firstCard) {
+                  secondCard = index;
+                  clickable = false;
+                }
+              }
+      
+              if (
+                firstCard !== null &&
+                secondCard !== null &&
+                typeof firstCard === "number" &&
+                typeof secondCard === "number" &&
+                firstCard !== secondCard
+              ) {
+                if (
+                  allCards[firstCard].dataset.suit === allCards[secondCard].dataset.suit &&
+                  allCards[firstCard].dataset.value === allCards[secondCard].dataset.value
+                ) {
+                  allCards[firstCard].classList.add("successfully");
+                  allCards[secondCard].classList.add("successfully");
+      
+                  firstCard = null;
+                  secondCard = null;
+                  clickable = true;
+      
+                  const arrSuccess = Array.from(allCards).filter((item) =>
+                    item.classList.contains("successfully")
+                  );
+      
+                  if (allCards.length === arrSuccess.length) {
+                    winner = true;
+                    gameResult(winner);
+                  }
+                } else {
+                  gameResult(winner);
+                }
+              }
+            }
+          });
+        });
+      }
+          
 };
