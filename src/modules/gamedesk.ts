@@ -1,8 +1,10 @@
+import { DeckCard } from "./startgame";
+
 const SUITS = ["♠", "♣", "♥", "♦"];
 const VALUES = ["A", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
 export default class cardsDesk {
-    cards: any = Card;
+    cards: Array<DeckCard> = [];
 
     constructor(cards = freshDesk()) {
         this.cards = cards;
@@ -22,7 +24,7 @@ export default class cardsDesk {
     }
 }
 
-class Card {
+class Card implements DeckCard {
     suit: string;
     value: string;
 

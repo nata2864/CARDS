@@ -7,6 +7,11 @@ declare global {
     }
 }
 
+export interface DeckCard {
+  suit: string;
+  value: string;
+}
+
 export const startGame = (difficult: string) => {
     const suitsBackground: Record<string, string> = {
       "♠": "spades.svg",
@@ -25,7 +30,7 @@ export const startGame = (difficult: string) => {
     let cardsIcons = createcardsArray(difficult);
 
     const cardsHtml = cardsIcons
-        .map((card) => {
+        .map((card:DeckCard) => {
             return `
       
       <div data-value=${card.value} data-suit=${
@@ -107,7 +112,7 @@ export const startGame = (difficult: string) => {
 
         gameSection.innerHTML = `<div class="game-section-start__container">
             <img class="timer_result-img" src="./static/images/${
-                winner ? 'winner.svg" alt="win"' : 'loser.svg" alt="lose"'
+                winner ? 'winner.png" alt="win"' : 'loser.png" alt="lose"'
             }  >
             
             <h2 class="game-menu_result-title">${
