@@ -3,6 +3,19 @@ import { DeckCard } from "./startgame";
 const SUITS = ["♠", "♣", "♥", "♦"];
 const VALUES = ["A", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
+interface MyDeckCard {
+    suit: string;
+    value: string;
+  }
+
+  function freshDesk(): Array<DeckCard> {
+    return SUITS.flatMap((suit) => {
+      return VALUES.map((value) => {
+        return new Card(suit, value);
+      });
+    });
+  }
+
 export default class cardsDesk {
     cards: Array<DeckCard> = [];
 
@@ -34,10 +47,10 @@ class Card implements DeckCard {
     }
 }
 
-function freshDesk() {
-    return SUITS.flatMap((suit) => {
-        return VALUES.map((value) => {
-            return new Card(suit, value);
-        });
-    });
-}
+// function freshDesk() {
+//     return SUITS.flatMap((suit) => {
+//         return VALUES.map((value) => {
+//             return new Card(suit, value);
+//         });
+//     });
+// }
