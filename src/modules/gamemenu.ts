@@ -6,10 +6,14 @@ export const createGameMenu = () => {
     );
 
     gameSection!.innerHTML = `<div class="game-section-start__container">
-        <h2 class="game-menu__title">Выбери <br>сложность</h2>
+        <div class=namemodul>
+        <h2 class="game-menu__title">Выбери сложность</h2>
+        </div>
+        <div class="levelnumbers">
         <button class="game-menu__difficult-btn">1</button>
         <button class="game-menu__difficult-btn">2</button>
         <button class="game-menu__difficult-btn">3</button>
+        </div>
         <button class="game-menu__start-btn">Старт</button>
     </div>`;
 

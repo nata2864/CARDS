@@ -6,15 +6,15 @@ const VALUES = ["A", "6", "7", "8", "9", "10", "J", "Q", "K"];
 interface MyDeckCard {
     suit: string;
     value: string;
-  }
+}
 
-  function freshDesk(): Array<DeckCard> {
+function freshDesk(): Array<DeckCard> {
     return SUITS.flatMap((suit) => {
-      return VALUES.map((value) => {
-        return new Card(suit, value);
-      });
+        return VALUES.map((value) => {
+            return new Card(suit, value);
+        });
     });
-  }
+}
 
 export default class cardsDesk {
     cards: Array<DeckCard> = [];
@@ -46,11 +46,3 @@ class Card implements DeckCard {
         this.value = value;
     }
 }
-
-// function freshDesk() {
-//     return SUITS.flatMap((suit) => {
-//         return VALUES.map((value) => {
-//             return new Card(suit, value);
-//         });
-//     });
-// }
